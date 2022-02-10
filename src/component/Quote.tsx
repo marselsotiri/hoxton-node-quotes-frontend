@@ -7,7 +7,7 @@ type Props = {
 function Quote({ quote }: Props) {
     return <li className="quotes-item" key={quote.id}>
         <div className="quote">
-            <p>{quote.content}</p>
+            <q>{quote.content}</q>
             <h3> - {quote.author}</h3>
         </div>
     </li>
