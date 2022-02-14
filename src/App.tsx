@@ -1,28 +1,24 @@
-import { useEffect, useState } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css'
-import Quote from './component/Quote';
-import { QuoteType } from './types';
+import AddQuote from './pages/AddQuote';
+import Quotes from './pages/Quotes';
+import RandomQuote from './pages/RandomQuote';
+import SingleQuote from './pages/SingleQuote';
+
 
 function App() {
-
-  const [quotes, setQuotes] = useState<QuoteType[]>([]);
-  useEffect(() => {
-    fetch("http://localhost:4000/quotes")
-      .then((resp) => resp.json())
-      .then((quotes) => setQuotes(quotes));
-  }, []);
 
 
   return (
     <div className="App">
 
-      <div className="quotes">
-        <ul className="quotes_list">
-          {quotes.map((quote) => (
-            <Quote quote={quote}  />
-          ))}
-        </ul>
-      </div>
+      <Routes>
+        <Route path="/" element={<Navigate to="/quotes" />} />
+        <Route path="/quotes" element={<Quotes />} />
+        <Route path="/quotes/:id" element={<SingleQuote />} />
+        <Route path="/randomQuote" element={<RandomQuote />} />
+        <Route path="/addQuote" element={<AddQuote />} />
+      </Routes>
 
     </div>
   )

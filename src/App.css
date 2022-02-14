@@ -5,3 +5,7 @@
 .quotes-item {
   list-style-type: none;
 }
+
+.add-quote-form {
+  display: grid;
+}
